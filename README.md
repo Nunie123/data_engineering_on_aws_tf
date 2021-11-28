@@ -1,0 +1,1 @@
+This repo contains the Terraform code that will be reference by the book 'Data Engineering on AWS', avilable for free at: https://github.com/Nunie123/data_engineering_on_aws
