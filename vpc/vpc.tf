@@ -9,7 +9,7 @@ resource "aws_vpc" "vpc" {
 }
 
 resource "aws_nat_gateway" "nat" {
-  allocation_id       = var.allocation_id
+  allocation_id       = aws_eip.eip.allocation_id
   subnet_id           = aws_subnet.public_subnet_1.id
   connectivity_type   = var.connectivity_type
   tags = {
@@ -181,5 +181,13 @@ resource "aws_network_acl" "acl_private" {
   tags = {
     Environment = var.environment
     Name        = "ACL for private subnets"
+  }
+}
+
+resource "aws_eip" "eip" {
+  vpc      = true
+  tags = {
+    Environment = var.environment
+    Name        = "EIP for NAT Gateway"
   }
 }
